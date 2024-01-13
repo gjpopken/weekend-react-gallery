@@ -1,5 +1,7 @@
 const express = require('express');
+// const { Pool } = require('pg');
 const router = express.Router();
+const pool = require('../modules/pool')
 
 // PUT /gallery/like/:id
 router.put('/like/:id', (req, res) => {
@@ -8,7 +10,15 @@ router.put('/like/:id', (req, res) => {
 
 // GET /gallery
 router.get('/', (req, res) => {
-  // code here
+  const queryText = `
+  SELECT * FROM "gallery";
+  `
+  pool.query(queryText)
+  .then((result) => {
+    res.send(result.rows)
+  }).catch((err) => {
+    console.log(err);
+  })
 });
 
 module.exports = router;
