@@ -5,7 +5,15 @@ const pool = require('../modules/pool')
 
 // PUT /gallery/like/:id
 router.put('/like/:id', (req, res) => {
-  // code here
+  const queryText = `
+  UPDATE "gallery" SET "likes" = "likes" + 1 WHERE "id" = $1;
+  `
+  pool.query(queryText, [req.params.id])
+  .then((result) => {
+    res.sendStatus(200)
+  }).catch((err) => {
+    console.log(err);
+  })
 });
 
 // GET /gallery
