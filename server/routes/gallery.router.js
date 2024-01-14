@@ -39,7 +39,7 @@ VALUES
   const queryParams = [req.body.url, req.body.title, req.body.description]
   pool.query(queryText, queryParams)
   .then((result) => {
-    console.log(result);
+    // console.log(result);
     res.sendStatus(201)
   }).catch((err) => {
     console.log(err);

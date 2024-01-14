@@ -17,9 +17,19 @@ const Form = () => {
         }
     }
 
-    const handleSavePost = () => {
+    const handleSavePost = (e) => {
+        e.preventDefault()
         console.log('in handleSavePost');
-        // Axios.post()
+        axios.post('/api/gallery', {
+            title: newTitle, 
+            description: newDesc, 
+            url: newImgURL
+        }).then((response) => {
+            console.log('successfully POSTed');
+        }).catch((err) => {
+            alert('Error with POST')
+            console.log(err);
+        })
     }
 
     if (inForm === false) {
@@ -31,9 +41,9 @@ const Form = () => {
     }
     return ( // return for creating the form
         <div className="inline">
-            <form onSubmit={() => {
+            <form onSubmit={(e) => {
+                handleSavePost(e)
                 toggleInForm()
-                handleSavePost()
             }}>
                 <label htmlFor="titleInput">Enter Title</label>
                 <input required type="text" id="titleInput" placeholder='Enter Title' onChange={(e) => setNewTitle(e.target.value)}/>
