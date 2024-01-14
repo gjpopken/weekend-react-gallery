@@ -9,7 +9,7 @@ const Form = ({ getGallery }) => {
     const [newImgURL, setNewImgURL] = useState('')
 
     const toggleInForm = () => {
-        console.log('in toggleInForm');
+        // console.log('in toggleInForm');
         if (inForm === false) {
             setInForm(true)
         } else {

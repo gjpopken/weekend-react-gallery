@@ -15,3 +15,13 @@ label {
     display: none;
 }
 
+form {
+    display: flex;
+    gap: 5px;
+}
+
+form input {
+    height: 25px;
+    margin: auto;
+}
+
