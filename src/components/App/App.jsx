@@ -1,4 +1,5 @@
 import GalleryList from "../GalleryList/GalleryList";
+import './App.css'
 
 
 function App() {

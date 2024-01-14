@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import GalleryItem from "../GalleryItem.jsx/GalleryItem"
 import './GalleryList.css'
 
 
@@ -24,10 +25,11 @@ const GalleryList = () => {
        <div className="galleryContainer">
         {galleryList.map((galItem) => {
             return (
-                <div key={galItem.id}>
-                    <h3>{galItem.title}</h3>
-                    <img src={galItem.url} alt={galItem.description} />
-                </div>
+                // <div key={galItem.id}>
+                //     <h3>{galItem.title}</h3>
+                //     <img src={galItem.url} alt={galItem.description} />
+                // </div>
+                <GalleryItem key={galItem.id} galItem={galItem}/>
             )
         })}
        </div>

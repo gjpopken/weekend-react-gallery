@@ -1,3 +1,48 @@
+/* * {
+    border: 1px solid black;
+} */
+
 img {
-    max-width: 100px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.galleryContainer {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px 30px;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+/* tutorial from https://stackoverflow.com/questions/21086385/how-to-make-in-css-an-overlay-over-an-image */
+.imageHolder {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.imageHolder .descBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: bisque;
+    opacity: 50%;
+    filter: blur(5px);
+}
+
+.blurred {
+    filter: blur(5px);
 }
