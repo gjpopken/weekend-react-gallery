@@ -4,21 +4,21 @@ import GalleryItem from "../GalleryItem.jsx/GalleryItem"
 import './GalleryList.css'
 
 
-const GalleryList = () => {
-    const [galleryList, setGalleryList] = useState([])
+const GalleryList = ({getGallery, galleryList}) => {
+    // const [galleryList, setGalleryList] = useState([])
 
     useEffect(() => {
         // function to get from DB
         getGallery()
     }, [])
 
-    const getGallery = () => {
-        axios.get('/api/gallery')
-            .then((response) => {
-                console.log(response.data);
-                setGalleryList(response.data)
-            })
-    }
+    // const getGallery = () => {
+    //     axios.get('/api/gallery')
+    //         .then((response) => {
+    //             console.log(response.data);
+    //             setGalleryList(response.data)
+    //         })
+    // }
 
 
     return (
