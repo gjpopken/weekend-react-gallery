@@ -22,14 +22,14 @@ const GalleryList = () => {
     
     
     return (
-       <div className="galleryContainer">
+       <div className="galleryContainer" data-testid="galleryList">
         {galleryList.map((galItem) => {
             return (
                 // <div key={galItem.id}>
                 //     <h3>{galItem.title}</h3>
                 //     <img src={galItem.url} alt={galItem.description} />
                 // </div>
-                <GalleryItem key={galItem.id} galItem={galItem}/>
+                <GalleryItem key={galItem.id} galItem={galItem} />
             )
         })}
        </div>

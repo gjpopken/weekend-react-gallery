@@ -41,7 +41,7 @@ h3 {
     border-radius: 25px;
     background-color: rgb(58, 52, 43);
     opacity: 30%;
-    filter: blur(5px);
+    /* filter: blur(5px); */
 }
 
 .imageHolder .descriptionText {
@@ -51,6 +51,7 @@ h3 {
     width: 240px;
     height: 240px;
     color: aliceblue;
+    filter: blur();
 }
 
 .blurred {
