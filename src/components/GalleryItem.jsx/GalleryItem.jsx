@@ -1,6 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 
-const GalleryItem = ({ galItem }) => {
+const GalleryItem = ({ galItem, getGallery }) => {
     const [inDesc, setInDesc] = useState(false)
 
     const toggleDesc = () => {
@@ -13,6 +14,18 @@ const GalleryItem = ({ galItem }) => {
         // console.log(inDesc);
     }
 
+    const handleLove = (id) => {
+        console.log('in handle love', id);
+        axios.put(`/api/gallery/like/${id}`)
+        .then((response) => {
+            console.log('Successfully PUT');
+            getGallery()
+        }).catch((err) => {
+            alert("Something wrong")
+            console.log(err);
+        })
+    }
+
     if (inDesc === false) {
         return (
             <div key={galItem.id} data-testid="galleryItem">
@@ -21,7 +34,9 @@ const GalleryItem = ({ galItem }) => {
                     <img onClick={() => toggleDesc()} src={galItem.url} alt={galItem.description} data-testid="toggle" />
                     <p className="likes">&#9829; {galItem.likes}</p>
                 </div>
-                <button>Love! </button>
+                <button onClick={() => {
+                    handleLove(galItem.id)
+                }} data-testid="like">Love! </button>
             </div>
         )
     }
@@ -34,7 +49,9 @@ const GalleryItem = ({ galItem }) => {
                 <div className="descBox" onClick={() => toggleDesc(galItem.id)} data-testid="toggle"><p className="descriptionText" onClick={() => toggleDesc(galItem.id)} data-testid="description">{galItem.description}</p></div>
                 <p className="likes">&#9829; {galItem.likes}</p>
             </div>
-            <button>Love! </button>
+            <button onClick={() => {
+                handleLove(galItem.id)
+            }} data-testid="like">Love! </button>
         </div>
     )
 }

@@ -29,7 +29,9 @@ const GalleryList = () => {
                 //     <h3>{galItem.title}</h3>
                 //     <img src={galItem.url} alt={galItem.description} />
                 // </div>
-                <GalleryItem key={galItem.id} galItem={galItem} />
+                <GalleryItem 
+                key={galItem.id} galItem={galItem}
+                getGallery={getGallery} />
             )
         })}
        </div>
