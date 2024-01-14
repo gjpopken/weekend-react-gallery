@@ -17,7 +17,11 @@ const GalleryItem = ({ galItem }) => {
         return (
             <div key={galItem.id} data-testid="galleryItem">
                 <h3>{galItem.title}</h3>
-                <img onClick={() => toggleDesc()} src={galItem.url} alt={galItem.description} data-testid="toggle"/>
+                <div className="imageHolder">
+                    <img onClick={() => toggleDesc()} src={galItem.url} alt={galItem.description} data-testid="toggle" />
+                    <p className="likes">&#9829; {galItem.likes}</p>
+                </div>
+                <button>Love! </button>
             </div>
         )
     }
@@ -28,8 +32,9 @@ const GalleryItem = ({ galItem }) => {
             <div className="imageHolder">
                 {/* <img className="blurred" src={galItem.url} alt={galItem.description} /> */}
                 <div className="descBox" onClick={() => toggleDesc(galItem.id)} data-testid="toggle"><p className="descriptionText" onClick={() => toggleDesc(galItem.id)} data-testid="description">{galItem.description}</p></div>
-                
+                <p className="likes">&#9829; {galItem.likes}</p>
             </div>
+            <button>Love! </button>
         </div>
     )
 }

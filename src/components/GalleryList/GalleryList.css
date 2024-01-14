@@ -9,6 +9,24 @@ img {
     border-radius: 25px;
 }
 
+button {
+    display: block;
+    padding: 5px;
+    margin: 10px auto;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+img, .imageHolder:hover {
+    cursor: pointer;
+}
+
 .galleryContainer {
     max-width: 1200px;
     padding-left: 30px;
@@ -39,8 +57,8 @@ h3 {
     width: 100%;
     height: 100%;
     border-radius: 25px;
-    background-color: rgb(58, 52, 43);
-    opacity: 30%;
+    background-color: rgb(58, 52, 43, 30%);
+    /* opacity: 30%; */
     /* filter: blur(5px); */
 }
 
@@ -50,8 +68,17 @@ h3 {
     left: 30px;
     width: 240px;
     height: 240px;
-    color: aliceblue;
+    /* color: aliceblue; */
     filter: blur();
+}
+
+.imageHolder .likes {
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    background-color: white;
+    padding: 2.5px;
+    border-radius: 30%;
 }
 
 .blurred {
