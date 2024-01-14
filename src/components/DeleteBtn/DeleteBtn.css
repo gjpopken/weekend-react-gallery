@@ -1,0 +1,11 @@
+.dltBtn {
+    position: absolute;
+    bottom: 0px;
+    right: 60px;
+    background-color: white;
+    border: none;
+    padding: 2.5px;
+    border-radius: 30%;
+    height: 29px;
+    margin: 16px 0;
+}
