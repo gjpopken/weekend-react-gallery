@@ -11,3 +11,7 @@ div.inline {
     display: flex;
 }
 
+label {
+    display: none;
+}
+
