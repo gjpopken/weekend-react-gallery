@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DeleteBtn from "../DeleteBtn/DeleteBtn";
 import axios from "axios";
 
 const GalleryItem = ({ galItem, getGallery }) => {
@@ -48,6 +49,8 @@ const GalleryItem = ({ galItem, getGallery }) => {
                 {/* <img className="blurred" src={galItem.url} alt={galItem.description} /> */}
                 <div className="descBox" onClick={() => toggleDesc(galItem.id)} data-testid="toggle"><p className="descriptionText" onClick={() => toggleDesc(galItem.id)} data-testid="description">{galItem.description}</p></div>
                 <p className="likes">&#9829; {galItem.likes}</p>
+                <DeleteBtn itemId={galItem.id} getGallery={getGallery}/>
+                {/* <button className="dltBtn">Delete</button> */}
             </div>
             <button onClick={() => {
                 handleLove(galItem.id)
