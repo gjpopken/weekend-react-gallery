@@ -15,10 +15,10 @@ const GalleryItem = ({ galItem, getGallery }) => {
     }
 
     const handleLove = (id) => {
-        console.log('in handle love', id);
+        // console.log('in handle love', id);
         axios.put(`/api/gallery/like/${id}`)
         .then((response) => {
-            console.log('Successfully PUT');
+            // console.log('Successfully PUT');
             getGallery()
         }).catch((err) => {
             alert("Something wrong")
