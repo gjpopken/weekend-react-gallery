@@ -1,4 +1,5 @@
 import GalleryList from "../GalleryList/GalleryList";
+import Form from "../Form/Form";
 import './App.css'
 
 

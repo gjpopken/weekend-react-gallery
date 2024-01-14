@@ -6,7 +6,7 @@ import './GalleryList.css'
 
 const GalleryList = () => {
     const [galleryList, setGalleryList] = useState([])
-    
+
     useEffect(() => {
         // function to get from DB
         getGallery()
@@ -14,27 +14,23 @@ const GalleryList = () => {
 
     const getGallery = () => {
         axios.get('/api/gallery')
-        .then((response) => {
-            console.log(response.data);
-            setGalleryList(response.data)
-        })
+            .then((response) => {
+                console.log(response.data);
+                setGalleryList(response.data)
+            })
     }
-    
-    
+
+
     return (
-       <div className="galleryContainer" data-testid="galleryList">
-        {galleryList.map((galItem) => {
-            return (
-                // <div key={galItem.id}>
-                //     <h3>{galItem.title}</h3>
-                //     <img src={galItem.url} alt={galItem.description} />
-                // </div>
-                <GalleryItem 
-                key={galItem.id} galItem={galItem}
-                getGallery={getGallery} />
-            )
-        })}
-       </div>
+        <div className="galleryContainer" data-testid="galleryList">
+            {galleryList.map((galItem) => {
+                return (
+                    <GalleryItem
+                        key={galItem.id} galItem={galItem}
+                        getGallery={getGallery} />
+                )
+            })}
+        </div>
     )
 }
 
