@@ -27,7 +27,8 @@ const GalleryItem = ({ galItem }) => {
             {/* <img className="grey" onClick={() => toggleDesc(galItem.id)} src={galItem.url} alt={galItem.description} /> */}
             <div className="imageHolder">
                 <img className="blurred" src={galItem.url} alt={galItem.description} />
-                <div className="descBox" onClick={() => toggleDesc(galItem.id)}>{galItem.description}</div>
+                <div className="descBox" onClick={() => toggleDesc(galItem.id)}></div>
+                <p className="descriptionText" onClick={() => toggleDesc(galItem.id)}>{galItem.description}</p>
             </div>
         </div>
     )

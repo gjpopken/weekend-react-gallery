@@ -38,9 +38,18 @@ h3 {
     width: 100%;
     height: 100%;
     border-radius: 25px;
-    background-color: bisque;
-    opacity: 50%;
+    background-color: rgb(58, 52, 43);
+    opacity: 30%;
     filter: blur(5px);
+}
+
+.imageHolder .descriptionText {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 240px;
+    height: 240px;
+    color: aliceblue;
 }
 
 .blurred {
