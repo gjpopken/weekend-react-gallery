@@ -10,12 +10,13 @@ img {
 }
 
 .galleryContainer {
-    width: 1200px;
+    max-width: 1200px;
+    padding-left: 30px;
     margin: auto;
     display: flex;
     /* justify-content: center; */
     flex-wrap: wrap;
-    align-content: flex-start;
+    /* align-content: flex-start; */
     gap: 20px 30px;
 }
 
