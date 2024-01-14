@@ -1,25 +1,13 @@
-import axios from "axios"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import GalleryItem from "../GalleryItem.jsx/GalleryItem"
 import './GalleryList.css'
 
 
-const GalleryList = ({getGallery, galleryList}) => {
-    // const [galleryList, setGalleryList] = useState([])
-
+const GalleryList = ({ getGallery, galleryList }) => {
     useEffect(() => {
         // function to get from DB
         getGallery()
     }, [])
-
-    // const getGallery = () => {
-    //     axios.get('/api/gallery')
-    //         .then((response) => {
-    //             console.log(response.data);
-    //             setGalleryList(response.data)
-    //         })
-    // }
-
 
     return (
         <div className="galleryContainer" data-testid="galleryList">

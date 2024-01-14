@@ -9,7 +9,6 @@ const Form = ({ getGallery }) => {
     const [newImgURL, setNewImgURL] = useState('')
 
     const toggleInForm = () => {
-        // console.log('in toggleInForm');
         if (inForm === false) {
             setInForm(true)
         } else {
@@ -19,13 +18,13 @@ const Form = ({ getGallery }) => {
 
     const handleSavePost = (e) => {
         e.preventDefault()
-        console.log('in handleSavePost');
+        // console.log('in handleSavePost');
         axios.post('/api/gallery', {
             title: newTitle,
             description: newDesc,
             url: newImgURL
         }).then((response) => {
-            console.log('successfully POSTed');
+            // console.log('successfully POSTed');
             getGallery()
         }).catch((err) => {
             alert('Error with POST')
