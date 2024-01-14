@@ -8,6 +8,7 @@ function App() {
     <div data-testid="app">
       <header>
         <h1>React Gallery</h1>
+        <Form />
       </header>
       <GalleryList />
     </div>

@@ -1,0 +1,13 @@
+button.inline {
+    /* display: inline; */
+    margin: auto;
+}
+
+/* .inline {
+    display: inline;
+} */
+
+div.inline {
+    display: flex;
+}
+
