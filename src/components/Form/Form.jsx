@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { TextField } from '@mui/material'
 import axios from 'axios'
 import './Form.css'
 
@@ -46,11 +47,12 @@ const Form = ({ getGallery }) => {
                 toggleInForm()
             }}>
                 <label htmlFor="titleInput">Enter Title</label>
-                <input required type="text" id="titleInput" placeholder='Enter Title' onChange={(e) => setNewTitle(e.target.value)} />
+                <TextField required id='titleInput' label="Enter Title" placeholder='Enter Title' variant='standard' onChange={(e) => setNewTitle(e.target.value)}/>
                 <label htmlFor="descInput">Enter Description</label>
-                <input required type="text" id="descInput" placeholder='Enter Description' onChange={(e) => setNewDesc(e.target.value)} />
+                <TextField required id='descInput' label="Enter Description" placeholder='Enter Description' variant='standard' onChange={(e) => setNewDesc(e.target.value)}/>
                 <label htmlFor="urlInput">Enter Image URL</label>
-                <input required type="text" id="urlInput" placeholder='Enter Image URL' onChange={(e) => setNewImgURL(e.target.value)} />
+                <TextField required id='urlInput' label="Enter Image URL" placeholder='Enter Image URL' variant='standard' onChange={(e) => setNewImgURL(e.target.value)}/>
+                {/* <input required type="text" id="urlInput" placeholder='Enter Image URL' onChange={(e) => setNewImgURL(e.target.value)} /> */}
                 <button className="inline" type='submit'>Save</button>
                 <button className="inline" onClick={toggleInForm} type='reset'>Cancel</button>
             </form>
