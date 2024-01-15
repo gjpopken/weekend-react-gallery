@@ -82,24 +82,6 @@ router.get('/', (req, res) => {
     })
 });
 
-// ! Old Working Post
-// router.post('/', (req, res) => {
-//   const queryText = `
-//   INSERT INTO "gallery" 
-// ("url", "title", "description")
-// VALUES
-// ($1, $2, $3);
-//   `
-//   const queryParams = [req.body.url, req.body.title, req.body.description]
-//   pool.query(queryText, queryParams)
-//   .then((result) => {
-//     // console.log(result);
-//     res.sendStatus(201)
-//   }).catch((err) => {
-//     console.log(err);
-//   })
-// })
-// upload.single('theUpload'),
 router.post('/',  upload.single('theUpload'), checkFileType, (req, res) => {
   console.log(req.file);
   console.log('requ body', req.body);
