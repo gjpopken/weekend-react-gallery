@@ -34,7 +34,7 @@ const GalleryItem = ({ galItem, getGallery }) => {
                 {/* <h3>{galItem.title}</h3> */}
                 <Typography variant="h6">{galItem.title}</Typography>
                 <div className="imageHolder">
-                    <img onClick={() => toggleDesc()} src={galItem.url} alt={galItem.description} data-testid="toggle" />
+                    <img onClick={() => toggleDesc()} src={`${galItem.url}`} alt={galItem.description} data-testid="toggle" />
                     <p className="likes">&#9829; {galItem.likes}</p>
                 </div>
                 <button onClick={() => {
