@@ -10,6 +10,9 @@ const checkFileType = (req, res, next) => {
   console.log(req.file.mimetype);
   const fileType = req.file.mimetype
   if (fileType === 'image/png' || fileType === 'image/jpeg') {
+    fs.rename(`./public/images/${req.file.filename}`, `./public/images/${req.file.filename}.jpg`, ()=>{
+      console.log('changed name');
+    })
     next()
   } else {
     fs.unlink(req.file.path, () => {
@@ -19,13 +22,30 @@ const checkFileType = (req, res, next) => {
   }
 }
 
-router.delete('/delete/:id', (req, res) => {
+const getPath = (req, res, next) => {
+  let path = ''
+  pool.query(`SELECT * FROM "gallery" WHERE "id" = $1`, [req.params.id])
+  .then((result) => {
+    if (result.rows) {
+      path = result.rows[0].url
+      req.pth = path
+    }
+    next()
+  }).catch((err) => {
+    console.log(err);
+  })
+}
+
+router.delete('/delete/:id', getPath, (req, res) => {
   const queryText = `
     DELETE FROM "gallery" WHERE "id" = $1;
   `
   pool.query(queryText, [req.params.id])
     .then((result) => {
-      console.log('successfuly DELETE');
+      console.log('successfuly DELETE', result);
+      fs.unlink(`./public/${req.pth}`, () => {
+        console.log('removed file.', req.pth);
+      })
       res.sendStatus(200)
     }).catch((err) => {
       console.log(err);
@@ -86,16 +106,16 @@ router.post('/', upload.single('theUpload'), checkFileType, (req, res) => {
 VALUES
 ($1, $2, $3);
   `
-  // const url = `images/${req.file.filename}`
-  const queryParams = [req.file.path, req.body.title, req.body.description]
-  //   pool.query(queryText, queryParams)
-  // .then((result) => {
-  //   // console.log(result);
-  //   res.sendStatus(201)
-  // }).catch((err) => {
-  //   console.log(err);
-  // })
-  res.sendStatus(201)
+  const url = `images/${req.file.filename}.jpg`
+  const queryParams = [url, req.body.title, req.body.description]
+    pool.query(queryText, queryParams)
+  .then((result) => {
+    // console.log(result);
+    res.sendStatus(201)
+  }).catch((err) => {
+    console.log(err);
+  })
+  // res.sendStatus(201)
 })
 
 module.exports = router;
