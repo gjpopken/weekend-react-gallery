@@ -7,7 +7,9 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 const checkFileType = (req, res, next) => {
-  console.log(req.file.mimetype);
+  // console.log(req.file.mimetype);
+  console.log(req.file || req.files || 'no files');
+  console.log('does this work?');
   const fileType = req.file.mimetype
   if (fileType === 'image/png' || fileType === 'image/jpeg') {
     fs.rename(`./public/images/${req.file.filename}`, `./public/images/${req.file.filename}.jpg`, ()=>{
@@ -20,6 +22,7 @@ const checkFileType = (req, res, next) => {
     })
     res.sendStatus(403)
   }
+  // res.sendStatus(200)
 }
 
 const getPath = (req, res, next) => {
@@ -96,8 +99,8 @@ router.get('/', (req, res) => {
 //     console.log(err);
 //   })
 // })
-
-router.post('/', upload.single('theUpload'), checkFileType, (req, res) => {
+// upload.single('theUpload'),
+router.post('/',  upload.single('theUpload'), checkFileType, (req, res) => {
   console.log(req.file);
   console.log('requ body', req.body);
     const queryText = `

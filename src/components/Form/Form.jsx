@@ -21,19 +21,16 @@ const Form = ({ getGallery }) => {
     const handleSavePost = (e) => {
         e.preventDefault()
         // console.log('in handleSavePost');
-        const fileInput = document.getElementById('urlInput')
+        // const fileInput = document.getElementById('urlInput')
         const formData = new FormData()
         formData.append('title', newTitle)
         formData.append('description', newDesc)
-        formData.append('file', fileInput.files[0])
+        formData.append('theUpload', newImgURL)
 
-        // console.log(formData);
+        console.log(JSON.stringify(formData));
 
-        axios.post('/api/gallery', {
-            title: newTitle,
-            description: newDesc,
-            url: newImgURL
-        }).then((response) => {
+        axios.post('/api/gallery', formData)
+        .then((response) => {
             // console.log('successfully POSTed');
             getGallery()
         }).catch((err) => {
@@ -60,7 +57,7 @@ const Form = ({ getGallery }) => {
                 <label htmlFor="descInput">Enter Description</label>
                 <TextField required id='descInput' label="Enter Description" placeholder='Enter Description' variant='standard' onChange={(e) => setNewDesc(e.target.value)} />
                 <label htmlFor="urlInput">Enter Image URL</label>
-                <TextField required id='urlInput' label=" " placeholder='Enter Image URL' variant='standard' type='file' onChange={(e) => setNewImgURL(e.target.value)}/>
+                <TextField required id='urlInput' label=" " placeholder='Enter Image URL' variant='standard' type='file' onChange={(e) => setNewImgURL(e.target.files[0])}/>
                 {/* <Button component="label" variant="contained" startIcon={<CloudUpload />}>
                     Upload file
                     <VisuallyHiddenInput type="file" />
